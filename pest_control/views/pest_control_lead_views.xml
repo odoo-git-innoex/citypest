@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_lead_form_inherit_pest" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.pest</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <style>
+                    .pest_control_section {
+                        background-color: #f8f9fa;
+                        padding: 20px;
+                        border-radius: 8px;
+                        margin-bottom: 20px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    }
+                    .pest_control_section h3 {
+                        color: #2c3e50;
+                        margin-bottom: 15px;
+                    }
+                    .pest_control_section .o_field_widget {
+                        width: 100% !important;
+                        max-width: none !important;
+                    }
+                </style>
+            </xpath>
+            <xpath expr="//sheet/notebook" position="replace"/>
+            <xpath expr="//sheet" position="inside">
+                <div class="pest_control_section">
+                    <h3>Pest Control Details</h3>
+                    <group class="o_form_group">
+                        <field name="description" widget="html"/>
+                    </group>
+                </div>
+                <notebook>
+                    <page string="Extra Information">
+                        <group>
+                            <field name="user_id"/>
+                            <field name="team_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_crm_lead_pest_control_tree" model="ir.ui.view">
+        <field name="name">crm.lead.pest.control.tree</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="description" string="Description"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

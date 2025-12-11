@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Pest Control Form Template -->
+    <template id="pest_control_form_template" name="Pest Control Inquiry Form">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h1>Pest Control Inquiry</h1>
+                <form action="/pest_control/submit" method="POST" class="needs-validation" novalidate="novalidate">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required="required"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required="required"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required="required"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" required="required" style="width: 100%; height: 150px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <!-- Success Template -->
+    <template id="pest_control_success_template" name="Pest Control Submission Success">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h1>Submission Successful</h1>
+                <p>Thank you for your submission. We will contact you soon.</p>
+                <a href="/pest_control/" class="btn btn-primary">Submit Another Inquiry</a>
+            </div>
+        </t>
+    </template>
+
+    <!-- Error Template -->
+    <template id="pest_control_error_template" name="Pest Control Submission Error">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h1>Submission Error</h1>
+                <p>An error occurred: <t t-esc="error"/></p>
+                <a href="/pest_control/" class="btn btn-primary">Try Again</a>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_field_service_report" model="mail.template">
+            <field name="name">Field Service Report</field>
+            <field name="model_id" ref="fs_service_report.model_field_service_report"/>
+            <field name="email_from"><![CDATA[${(object.company_id.email_formatted or user.email_formatted or 'no-reply@demopest.velvetbud.in') | safe}]]></field>
+            <field name="partner_to">{{ object.lead_id.partner_id.id }}</field>
+            <field name="subject">Field Service Report {{ object.name }}</field>
+            <field name="body_html"><![CDATA[
+                <div style="background-color:#F3F5F6;color:#515166;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:30px;">
+                    Dear <t t-esc="object.lead_id.partner_id.name or 'Customer'"/>,<br/><br/>
+                    Please find attached the Field Service Report <b><t t-esc="object.name"/></b> for your reference.<br/>
+                    Details of the service:<br/>
+                    - Lead: <t t-esc="object.lead_id.name"/><br/>
+                    - Date: <t t-esc="object.service_date"/><br/>
+                    - Technician: <t t-esc="object.technician_id.name or 'N/A'"/><br/>
+                    - Service Order: <t t-esc="object.sale_order_id.name or 'N/A'"/><br/>  <!-- Renamed -->
+                    - Targeted Pests: <t t-foreach="object.targeted_pest_ids" t-as="pest"><t t-esc="pest.name"/><t t-if="not pest_last">, </t></t><t t-if="any(p.name == 'Others' for p in object.targeted_pest_ids)"> (<t t-esc="object.targeted_pest_other"/>)</t><br/>
+                    - Type of Visit: <t t-esc="object.type_of_visit"/><t t-if="object.type_of_visit == 'others'"> (<t t-esc="object.type_of_visit_other"/>)</t><br/>
+                    - Description: <t t-esc="object.report_details or 'N/A'"/><br/>
+                    - Recommendations/Remarks: <t t-esc="object.recommendations_remarks or 'N/A'"/><br/><br/>
+                    Do not hesitate to contact us if you have any questions.<br/><br/>
+                    Best regards,<br/>
+                    <t t-esc="object.company_id.name or 'Your Company'"/>
+                </div>
+            ]]></field>
+            <field name="report_template_ids" eval="[(6, 0, [ref('fs_service_report.action_service_print')])]"/>
+        </record>
+    </data>
+</odoo>

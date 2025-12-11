@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="activity_open_survey_form" model="mail.activity.type">
+        <field name="name">Site Survey Report</field>
+        <field name="summary">Prepare Site Survey Report</field>
+        <field name="category">reminder</field>  <!-- Popover only, no calendar/email -->
+        <field name="icon">fa-file-text-o</field>  <!-- FontAwesome icon -->
+		<!--    <field name="default_next_type_id" ref="activity_open_survey_form"/> --> <!-- Optional: Chain to self -->
+    </record>
+</odoo>

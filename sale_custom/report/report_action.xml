@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_quotation_print" model="ir.actions.report">
+            <field name="name">Quotation Print</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale_custom.quotation_template_id</field>
+            <field name="report_file">sale_custom.quotation_template_id</field>
+            <field name="paperformat_id" ref="sale_custom.quotation_paperformat"/>
+            <field name="print_report_name">'Quotation'</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="action_tax_invoice_print" model="ir.actions.report">
+            <field name="name">Tax Invoice</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale_custom.tax_invoice_template_id</field>
+            <field name="report_file">sale_custom.tax_invoice_template_id</field>
+            <field name="paperformat_id" ref="sale_custom.tax_invoice_paperformat"/>
+            <field name="print_report_name">'Tax Invoice'</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

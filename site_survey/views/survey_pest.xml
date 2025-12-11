@@ -1,0 +1,38 @@
+<odoo>
+        <!-- Pest Type Management Views -->
+    <record id="view_site_survey_pest_tree" model="ir.ui.view">
+        <field name="name">site.survey.pest.tree</field>
+        <field name="model">site.survey.pest</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_site_survey_pest_form" model="ir.ui.view">
+        <field name="name">site.survey.pest.form</field>
+        <field name="model">site.survey.pest</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Pest Details">
+                        <field name="name" placeholder="Enter pest type (e.g., Termites)"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_site_survey_pest" model="ir.actions.act_window">
+        <field name="name">Pest Types</field>
+        <field name="res_model">site.survey.pest</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="crm_config_settings_menu"
+        name="Survey Pest Types"
+        parent="crm.crm_menu_config"
+        action="action_site_survey_pest"/>
+</odoo>

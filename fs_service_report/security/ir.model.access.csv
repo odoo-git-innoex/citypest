@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_field_service_report,field_service_report,model_field_service_report,base.group_user,1,1,1,1
+access_field_service_pest_type,field_service_pest_type,model_field_service_pest_type,base.group_user,1,1,1,1
+access_fs_report_chemical_used,fs_report_chemical_used,model_fs_report_chemical_used,base.group_user,1,1,1,1
+access_followup_recommendation_user,fs_service_report.followup.recommendation,model_followup_recommendation,base.group_user,1,1,1,1
+access_methord_application,methord_application,model_method_application,base.group_user,1,1,1,1

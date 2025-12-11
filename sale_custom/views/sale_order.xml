@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_order_form_inherit_sub_ref" model="ir.ui.view">
+            <field name="name">sale.order.form.sub.ref</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button" type="object" name="action_view_fsm_orders" icon="fa-truck" invisible="fsm_order_count == 0">
+                        <field string="FSM Orders" name="fsm_order_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="action_create_fsm_order" string="Create Fsm order" type="object" class="oe_highlight" invisible="state != 'sale'"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="sub"/>
+                    <field name="ref"/>
+                </xpath>
+
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="document_choice" required="state == 'draft'"/>
+                    <field name="lpo_number" invisible="document_choice != 'add_lpo'" required="document_choice == 'add_lpo' and state == 'add_lpo_contract'"/>
+                    <field name="lpo_doc_ids" widget="many2many_binary" invisible="document_choice != 'add_lpo'" required="document_choice == 'add_lpo' and state == 'add_lpo_contract'"/>
+                    <field name="contract_doc_ids" widget="many2many_binary" invisible="document_choice != 'add_contract'" required="document_choice == 'add_contract' and state == 'add_lpo_contract'"/>
+                </xpath>
+
+                <button name="action_confirm" position="attributes">
+                    <attribute name="invisible">state not in ['sent', 'add_lpo_contract']</attribute>
+                </button>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,100 @@
+<odoo>
+
+    <!-- Top-level Pest Control menu -->
+    <menuitem id="pest_control_menu_root" name="Pest Control" sequence="10"/>
+
+    <!-- Submenu: Home -->
+    <record id="action_pest_control_home" model="ir.actions.act_window">
+        <field name="name">Home</field>
+        <field name="res_model">pest.control</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+	
+    <menuitem id="pest_control_menu_home" name="Home"
+              parent="pest_control_menu_root"
+              action="action_pest_control_home" sequence="10"/>   
+
+    <!-- Submenu: Customers (child of Pest Control) -->
+    <menuitem id="pest_control_menu_customer" name="Customers"
+              parent="pest_control_menu_root" sequence="30"/>
+			  
+	<!-- Enquiries (child of Enquiries submenu) -->
+    <menuitem id="menu_field_new_enquiries" name="Enquiries"
+              parent="pest_control_menu_customer"
+              action="crm.crm_lead_opportunities" sequence="10"/>
+ 
+    <!-- Customers (child of Customer submenu) -->
+    <menuitem id="menu_field_customers" name="All Customers"
+              parent="pest_control_menu_customer"
+              action="base.action_partner_form" sequence="20"/>
+
+    <!-- Schedule Site Visit (child of Customers submenu, right under Customers) -->
+    <menuitem id="menu_calendar" name="Schedule Site Visit"
+              parent="pest_control_menu_customer"
+              action="calendar.action_calendar_event" sequence="30"/>
+
+    <!-- Site Survey (child of Customers) -->
+    <menuitem id="pest_control_menu_site_survey" name="Site Survey"
+              parent="pest_control_menu_customer" sequence="40"/>
+    
+    <!-- Site Survey Records (child of Site Survey) -->
+    <menuitem id="menu_site_surveys" name="Surveys"
+              parent="pest_control_menu_site_survey"
+              action="site_survey.action_site_survey"/>  
+
+    <!-- Submenu: Sales (child of Pest Control) -->
+    <menuitem id="pest_control_menu_sales" name="Sales"
+              parent="pest_control_menu_root" sequence="40"/>
+			  
+    <!-- Quotations (child of Sales) -->
+    <menuitem id="menu_field_quotations" name="Quotations"
+              parent="pest_control_menu_sales"
+              action="sale.action_quotations" sequence="10"/>
+			  
+	<!-- Orders (child of Sales) -->
+    <menuitem id="menu_field_orders" name="Sales Orders"
+              parent="pest_control_menu_sales"
+              action="sale.action_orders" sequence="20"/>		  
+			  
+    <!-- Invoices (child of Sales) -->
+    <menuitem id="menu_field_invoices" name="Invoices"
+              parent="pest_control_menu_sales"
+              action="account.action_move_out_invoice_type" sequence="30"/>
+
+    <!-- Submenu: Services (child of Pest Control) -->
+    <menuitem id="pest_control_menu_services" name="Services"
+              parent="pest_control_menu_root" sequence="50"/>
+			  
+	<!-- Service Orders (child of Services) -->
+    <menuitem id="menu_field_service_orders" name="Service Orders"
+              parent="pest_control_menu_services"
+              action="fieldservice.action_fsm_dash_order" sequence="10"/>		  
+			  
+    <!-- Service Report (child of Services) -->
+    <menuitem id="menu_field_service_report" name="Service Report"
+              parent="pest_control_menu_services"
+              action="fs_service_report.view_field_service_report_action" sequence="20"/>
+
+    <!-- Submenu: Inventory (child of Pest Control) -->
+    <menuitem id="pest_control_menu_inventory" name="Inventory"
+              parent="pest_control_menu_root" sequence="60"/>
+    <!-- Products (child of Inventory) -->
+    <menuitem id="menu_product_in_config_stock" name="Products"
+              parent="pest_control_menu_inventory"
+              action="product.product_template_action"/>
+
+    <!-- Submenu: Settings (child of Pest Control) -->
+    <menuitem id="pest_control_menu_settings" name="Settings"
+              parent="pest_control_menu_root" sequence="70"/>
+			  
+    <!-- FSM Locations (child of Settings) -->
+    <menuitem id="menu_site_survey_locations" name="Locations"
+              parent="pest_control_menu_settings"
+              action="fieldservice.action_fsm_location"/>
+				  
+    <!-- Pest Types management (child of Settings) -->
+    <menuitem id="menu_site_survey_pests" name="Manage Pests"
+              parent="pest_control_menu_settings"
+              action="site_survey.action_site_survey_pest" groups="base.group_user"/>
+
+</odoo>

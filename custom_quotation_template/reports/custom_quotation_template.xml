@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Custom Paper Format -->
+    <record id="paperformat_custom_quotation" model="report.paperformat">
+        <field name="name">Custom Quotation Format</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">10</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <!-- Custom Quotation Template -->
+    <template id="custom_quotation_template" name="Custom Quotation">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                        <!-- Header Section -->
+                        <div class="header-section" style="text-align: center; margin-bottom: 30px;">
+                            <!-- Company Logo -->
+                            <div style="margin-bottom: 15px;">
+                                <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" 
+                                     style="max-height: 80px; max-width: 200px; object-fit: contain;" 
+                                     alt="Company Logo"/>
+                                <div t-if="not doc.company_id.logo" 
+                                     style="width: 80px; height: 80px; background-color: #2E8B57; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 32px; font-weight: bold;">
+                                        <t t-esc="doc.company_id.name[0] if doc.company_id.name else 'C'"/>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Company Name -->
+                            <div style="margin-bottom: 15px;">
+                                <h1 style="margin: 0; color: #000000; font-size: 18px; font-weight: bold;">
+                                    <t t-esc="doc.company_id.name or 'Company Name'"/>
+                                </h1>
+                            </div>
+                            
+                            <!-- Contact Information -->
+                            <div style="font-size: 12px; color: #000000; margin-bottom: 20px;">
+                                <div style="margin-bottom: 5px;">
+                                    <strong>TEL:</strong> <t t-esc="doc.company_id.phone or ''"/> | 
+                                    <strong>MOBILE:</strong> <t t-esc="doc.company_id.mobile or ''"/> | 
+                                    <strong>ADDRESS:</strong> <t t-esc="doc.company_id.street or ''"/>, <t t-esc="doc.company_id.city or ''"/> - <t t-esc="doc.company_id.country_id.name or ''"/>
+                                </div>
+                                <div>
+                                    <strong>E-mail:</strong> <t t-esc="doc.company_id.email or ''"/> | 
+                                    <strong>Website:</strong> <t t-esc="doc.company_id.website or ''"/>
+                                </div>
+                            </div>
+                            
+                            <!-- Document Title -->
+                            <h1 style="font-size: 28px; font-weight: bold; color: #000000; margin: 0; text-decoration: underline;">
+                                QUOTATION
+                            </h1>
+                        </div>
+
+                        <!-- Quotation Details Section -->
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+                            <!-- Recipient Information -->
+                            <div style="width: 45%;">
+                                <h3 style="color: #000000; margin-bottom: 10px; font-size: 14px;">To:</h3>
+                                <div style="font-size: 12px; line-height: 1.4;">
+                                    <div><strong>M/s <t t-esc="doc.partner_id.name or ''"/></strong></div>
+                                    <div t-if="doc.partner_id.street">P.O.Box: <t t-esc="doc.partner_id.street"/></div>
+                                    <div t-if="doc.partner_id.city">Dubai - UAE.</div>
+                                    <div t-if="doc.partner_id.contact_address">Attn: <t t-esc="doc.partner_id.contact_address"/></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quotation Reference -->
+                            <div style="width: 45%;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><strong>Ref:</strong></td>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><t t-esc="doc.name or ''"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><strong>Date:</strong></td>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><t t-esc="doc.date_order and doc.date_order.strftime('%d-%m-%Y') or ''"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><strong>Tel:</strong></td>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><t t-esc="doc.partner_id.phone or ''"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><strong>E-mail:</strong></td>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><t t-esc="doc.partner_id.email or ''"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ddd;"><strong>PAGE:</strong></td>
+                                        <td style="padding: 5px; border: 1px solid #ddd;">1</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Subject and Reference -->
+                        <div style="margin-bottom: 20px;">
+                            <div style="margin-bottom: 10px;"><strong>Dear Sir,</strong></div>
+                            <div style="margin-bottom: 5px;">
+                                <strong>Sub:</strong> <t t-esc="doc.note or 'Quotation for Services'"/>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <strong>Ref:</strong> Your email enquiry today.
+                            </div>
+                        </div>
+
+                        <!-- Introductory Paragraph -->
+                        <div style="margin-bottom: 30px; font-size: 12px; line-height: 1.6; text-align: justify;">
+                            Thank you for giving us the opportunity to submit our offer. 
+                            We are pleased to offer our services to carry out <strong>Pest Control Service against all crawling insects, 
+                            flying insects, rodents etc.</strong> We use chemicals that are approved by Dubai Municipality and 
+                            we are in the <strong>A Grade in the DM work standard.</strong>
+                        </div>
+
+                        <!-- Service Description and Pricing Table -->
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px;">
+                            <thead>
+                                <tr style="background-color: #f0f0f0; color: #000000;">
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: center; width: 5%;">S. No.</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 60%;">Description</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: center; width: 10%;">Unit</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: right; width: 12%;">Unit Price</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: right; width: 13%;">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="line_counter" t-value="0"/>
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <t t-set="line_counter" t-value="line_counter + 1"/>
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">
+                                            <t t-esc="line_counter"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd; text-align: left;">
+                                            <t t-esc="line.name"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">
+                                            <t t-esc="line.product_uom_qty"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
+                                            <t t-esc="'{:.2f}'.format(line.price_unit)"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
+                                            <t t-esc="'{:.2f}'.format(line.price_subtotal)"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                
+                                <!-- VAT Row -->
+                                <tr>
+                                    <td colspan="4" style="padding: 8px; border: 1px solid #ddd; text-align: right; font-weight: bold;">
+                                        <t t-esc="doc.amount_tax and doc.amount_tax > 0 and 'VAT (' + str(round((doc.amount_tax / doc.amount_untaxed) * 100, 0)) + '%)' or 'VAT'"/>
+                                        <t t-if="doc.company_id.vat"> (TRN <t t-esc="doc.company_id.vat"/>)</t>:
+                                    </td>
+                                    <td style="padding: 8px; border: 1px solid #ddd; text-align: right; font-weight: bold;">
+                                        <t t-esc="'{:.2f}'.format(doc.amount_tax)"/>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Total Row -->
+                                <tr style="background-color: #f0f0f0;">
+                                    <td colspan="4" style="padding: 8px; border: 1px solid #ddd; text-align: right; font-weight: bold; font-size: 13px;">
+                                        <strong>TOTAL:</strong>
+                                    </td>
+                                    <td style="padding: 8px; border: 1px solid #ddd; text-align: right; font-weight: bold; font-size: 13px;">
+                                        <strong><t t-esc="'{:.2f}'.format(doc.amount_total)"/></strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Payment Terms -->
+                        <div style="margin-bottom: 30px; font-size: 12px;">
+                            <strong>Payment Terms:</strong> 50% in advance upon signing the AMC &amp; 50% after six months.
+                        </div>
+
+                        <!-- Closing Section -->
+                        <div style="margin-bottom: 30px; font-size: 12px; line-height: 1.6; text-align: justify;">
+                            We hope that our proposal is suitable to your requirements and we look forward to your 
+                            confirmation by return fax or LPO if accepted.
+                        </div>
+
+                        <div style="margin-bottom: 20px; font-size: 12px;">
+                            <div style="margin-bottom: 10px;">Thanking you,</div>
+                            <div style="margin-bottom: 10px;">Yours faithfully</div>
+                            <div style="margin-bottom: 5px;">
+                                <!-- <strong>Rasheed</strong> -->
+                                <strong><t t-esc="doc.company_id.name or 'Company Name'"/></strong>
+                                <div style="margin-top: 20px; margin-bottom: 5px;">
+                                    <span style="border-top: 1px solid #000; padding-top: 5px; display: inline-block; min-width: 100px;"></span>
+                                </div>
+                                <div style="font-size: 10px;">050-8553371</div>
+                            </div>
+                        </div>
+
+                        <!-- Company Footer -->
+                        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #000000;">
+                            <div style="font-size: 12px; color: #000000; margin-bottom: 5px;">
+                                <strong><t t-esc="doc.company_id.name or 'Company Name'"/></strong>
+                            </div>
+                            <div style="font-size: 10px; color: #000000; margin-bottom: 10px;">
+                                <t t-esc="doc.company_id.street or ''"/>, <t t-esc="doc.company_id.city or ''"/> <t t-esc="doc.company_id.country_id.name or ''"/>
+                            </div>
+                            <div style="font-size: 10px; color: #000000; font-style: italic;">
+                                We Care For The City And Its Environment
+                            </div>
+                        </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Report Action -->
+    <record id="action_report_custom_quotation" model="ir.actions.report">
+        <field name="name">Custom Quotation</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_quotation_template.custom_quotation_template</field>
+        <field name="report_file">custom_quotation_template.custom_quotation_template</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_custom_quotation"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,43 @@
+<odoo>
+    <record id="crm_lead_inherit_site_survey" model="ir.ui.view">
+        <field name="name">crm.lead.site.survey</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+                <button name="action_site_survey" string="Move to Site Survey" type="object" class="oe_highlight" invisible="not is_new"/>
+                <button name="create_site_survey" string="Create Survey" type="object" class="oe_highlight" invisible="not is_site_survey"/>
+            </xpath>
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button class="oe_stat_button" type="object" invisible="survey_count==0"
+                        name="action_view_site_survey" icon="fa-star">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="survey_count" widget="statinfo"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+                
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="is_new" invisible="1"/>
+                <field name="is_survey_submit" invisible="1"/>
+                <field name="is_site_survey" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_stage_tree_inherit" model="ir.ui.view">
+        <field name="name">crm.stage.tree</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_tree"/>
+        <field name="arch" type="xml">
+            <field name="is_won" position="after">
+                <field name="active" invisible="1"/>
+                <field name="is_new"/>
+                <field name="is_survey_submit"/>
+                <field name="is_site_survey"/>
+            </field>
+        </field>
+    </record>
+</odoo>

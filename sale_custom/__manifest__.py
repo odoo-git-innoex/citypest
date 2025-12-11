@@ -1,0 +1,26 @@
+{
+    'name': "Sale Custom",
+    'summary': """Sale Custom""",
+    'description': """ """,
+    'author': "Jas",
+    'website': "",
+    'category': 'Sale',
+    'version': '17.0.0.0.0',
+    'depends': ['base','sale','account', 'fieldservice'],
+    'data': [   
+            "security/ir.model.access.csv",    
+            "report/paper_format.xml",
+            "report/report_action.xml",
+            "report/quot_template.xml",
+            "report/invoice_template.xml",
+            "report/report_header.xml",
+            "report/invoice_header.xml",
+            "views/sale_order.xml",
+            "views/account_move.xml",
+            "views/fsm_order.xml",
+            ],
+
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

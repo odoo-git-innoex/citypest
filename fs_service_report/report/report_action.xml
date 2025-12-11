@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_service_print" model="ir.actions.report">
+            <field name="name">Service Report</field>
+            <field name="model">field.service.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">fs_service_report.service_template_id</field>
+            <field name="report_file">fs_service_report.service_template_id</field>
+            <field name="paperformat_id" ref="fs_service_report.service_paperformat"/>
+            <field name="print_report_name">'Service Report'</field>
+            <field name="binding_model_id" ref="model_field_service_report"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

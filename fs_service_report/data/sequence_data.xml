@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sequence_field_service_report" model="ir.sequence">
+        <field name="name">Field Service Report Sequence</field>
+        <field name="code">field.service.report</field>
+        <field name="prefix">FSR-</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

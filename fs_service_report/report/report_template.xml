@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="service_template_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="fs_service_report.service_header">
+                    <div class="page" style="font-family: Arial;color:#5981C2">
+                    <br/>
+                    <table style="width:100%; border:1px solid #5981C2; border-collapse:collapse;">
+                        <tr>
+                            <td style="padding:4px 10px; border-right:1px solid #5981C2; width:50%;">
+                                <strong>Client:</strong> <span t-field="o.customer_id.name"/><br/>
+                                <strong>Contact Person:</strong> <span t-field="o.technician_id.name"/>
+                            </td>
+                            <td style="padding:4px 10px; width:50%;border-right:1px solid #5981C2">
+                                <strong>Property:</strong> <t t-if="o.customer_id.street"> <span t-field="o.customer_id.street"/>,</t><t t-if="o.customer_id.street2"> <span t-field="o.customer_id.street2"/>,</t><t t-if="o.customer_id.city"> <span t-field="o.customer_id.city"/>,</t><br/>
+                                <strong>Location:</strong> <span t-field="o.location_id.name"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%; border:1px solid #5981C2; border-collapse:collapse;">
+                        <tr style="background:#E8E584; color:#003366;height:30px">
+                            <th style="width:50%; padding:3px 10px; border-right:1px solid #5981C2;padding:6px">Targeted Pest</th>
+                            <th style="width:50%; padding:3px 10px;padding:6px">Type of Visit</th>
+                        </tr>
+                        <tr height="65px">
+                            <td style="width:50%;vertical-align:top; padding:6px 10px; border-right:1px solid #5981C2;">
+                                <!-- Get all available pest types -->
+                                <t t-set="all_pests" t-value="request.env['field.service.pest.type'].search([])"/>
+                                <t t-foreach="all_pests" t-as="pest">
+                                    <span style="display:inline-block; width:24%; font-size:16px;">
+                                        <t t-if="pest in o.targeted_pest_ids">☑</t>
+                                        <t t-else="">☐</t>
+                                        <span t-field="pest.name"/>
+                                    </span>
+                                    <!-- Add line break after every 4th item -->
+                                    <t t-if="(pest_index + 1) % 4 == 0">
+                                        <br/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td style="width:50%;vertical-align:top; padding:6px 10px;">
+                                <span style="display:inline-block; width:49%; font-size:16px;">
+                                    <t t-if="o.type_of_visit == 'major'">☑</t>
+                                    <t t-else="">☐</t> Major
+                                </span>
+                                <span style="display:inline-block; width:49%; font-size:16px;">
+                                    <t t-if="o.type_of_visit == 'one_time'">☑</t>
+                                    <t t-else="">☐</t> One Time
+                                </span>
+                                <br/>
+                                <span style="display:inline-block; width:49%; font-size:16px;">
+                                    <t t-if="o.type_of_visit == 'call_out'">☑</t>
+                                    <t t-else="">☐</t> Call Out
+                                </span>
+                                <span style="display:inline-block; width:49%; font-size:16px;">
+                                    <t t-if="o.type_of_visit == 'inspection'">☑</t>
+                                    <t t-else="">☐</t> Inspection
+                                </span>
+                                <br/>
+                                <span style="display:inline-block; width:49%; font-size:16px;">
+                                    <t t-if="o.type_of_visit == 'follow_up'">☑</t>
+                                    <t t-else="">☐</t> Follow-Up
+                                </span>
+                                <span style="display:inline-block; width:49%; font-size:16px;">
+                                    <t t-if="o.type_of_visit == 'routine_job'">☑</t>
+                                    <t t-else="">☐</t> Routine Job
+                                </span>
+                                <br/>
+                                <span style="display:inline-block; width:100%; font-size:16px;">
+                                    <t t-if="o.type_of_visit == 'others'">☑</t>
+                                    <t t-else="">☐</t> Others (Specify) 
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%; border:1px solid #5981C2; border-collapse:collapse;">
+                        <tr style="background:#E8E584; color:#003366;">
+                            <th style="width:100%; padding:3px 10px; border-right:1px solid #5981C2;padding:6px">Description Of Services</th>
+                        </tr>
+                        <tr style="height:215px">
+                            <td style="width:100%; padding:3px 10px; border-right:1px solid #5981C2;padding:6px"><span t-field="docs.report_details"/></td>
+                        </tr>
+                    </table>
+                    <table style="width:100%; border:1px solid #5981C2; border-collapse:collapse;">
+                        <tr style="background:#E8E584; color:#003366;">
+                            <th style="width:100%; padding:3px 10px; border-right:1px solid #5981C2;padding:6px">Recommendation/Remarks</th>
+                        </tr>
+                        <tr style="height:215px">
+                            <td style="width:100%; padding:3px 10px; border-right:1px solid #5981C2;padding:6px">
+                                <t t-foreach="o.followup_recommendation_ids" t-as="recommendation">
+                                    * <span t-esc="recommendation.display_name"/> <br/>
+                                </t>
+                                <br/>
+                                <span t-field="o.recommendations_remarks"/>
+                            </td>           
+                        </tr>
+                    </table>
+                    <table style="width:100%; border-collapse:collapse;">
+                        <tr>
+                            <!-- Left Side: Client's Approval -->
+                            <td style="width:50%; vertical-align:top; border:1px solid #5981C2;">
+                                <div style="background:#E8E584; font-weight:bold; padding:8px; border-bottom:1px solid #5981C2;">
+                                    Client's Approval
+                                </div>
+
+                                <div style="font-size:13px; padding:5px;">
+                                    I / We the client confirm that the above services has been carried out with full satisfaction
+                                    and I / We agree &amp; understand to correct the above mentioned recommendations in order to
+                                    achieve successful Pest Control measures at our Location / Premise / Property.
+                                </div>
+
+                                <div style="margin-top:8px;padding-left:5px">
+                                    <strong>Client / Authorised Person Name &amp; Signature:</strong>
+                                </div>
+
+                                <div style="margin-top:8px; font-size:13px;padding-left:5px">
+                                    Name: <span t-field="o.client_approver_name"/><br/><br/>
+                                    Signature: <img t-attf-src="data:image/png;base64,{{ o.client_signature }}"
+                                                    alt="Signature"
+                                                    style="max-height:60px; max-width:200px; display: inline-block;"/><br/><br/>
+                                    Date: <span t-field="o.client_approval_date"/><br/><br/>
+                                    Service Team Time Out: ______________ (am / pm)<br/><br/>
+                                </div>
+                            </td>
+
+                            <!-- Right Side: City Pest -->
+                            <td style="width:50%; vertical-align:top; border:1px solid #5981C2;">
+                                <div style="background:#E8E584; font-weight:bold; padding:8px; border-bottom:1px solid #5981C2;text-align:center">
+                                    City Pest
+                                </div>
+                                
+
+                                <table style="width:100%; border-collapse:collapse; font-size:13px;">
+                                    <tr>
+                                        <th style="border:1px solid #5981C2; padding:2px; width:30%;">Service Team</th>
+                                        <th style="border:1px solid #5981C2; padding:2px; width:50%;">Products / Pesticides Used</th>
+                                        <th style="border:1px solid #5981C2; padding:2px; width:30%;">Qty.</th>
+                                    </tr>
+                                    <t t-set="count" t-value="1"/>
+                                    <t t-foreach="o.fsm_products_used" t-as="chemical">
+                                        <tr style="border-bottom:1px solid #5981C2;">
+                                            <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/> <span t-esc="count"/></td>
+                                            <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/> <span t-field="chemical.product_id.name"/></td>
+                                            <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/> <span t-field="chemical.quantity"/></td>
+                                        </tr>
+                                        <t t-set="count" t-value="count + 1"/>
+                                    </t>
+                                    <t t-if="count == 1">
+                                        <t t-foreach="range(0,4)" t-as="chemical">
+                                            <tr style="border-bottom:1px solid #5981C2;">
+                                                <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/> <span t-esc="count"/></td>
+                                                <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/></td>
+                                                <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/></td>
+                                            </tr>
+                                            <t t-set="count" t-value="count + 1"/>
+                                        </t>
+                                    </t>
+                                    <t t-if="count &lt; 4 and count != 1">
+                                        <t t-foreach="range(count,5)" t-as="chemical">
+                                            <tr style="border-bottom:1px solid #5981C2;">
+                                                <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/> <span t-esc="count"/></td>
+                                                <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/></td>
+                                                <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:0px;"><br/></td>
+                                            </tr>
+                                            <t t-set="count" t-value="count + 1"/>
+                                        </t>
+                                    </t>
+
+                                    <tr style="border-bottom:1px solid #5981C2;">
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;"><br/>Signature:</td>
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;"> </td>
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;"> </td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid #5981C2;">
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;">Follow up Needed:</td>
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;"> </td>
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;"> </td>
+                                    </tr>
+                                    <tr style="border-bottom:1px solid #5981C2;">
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;">&#9634; Yes  &#9634; No</td>
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;"> </td>
+                                        <td style="border-bottom:1px solid #5981C2;border-left:1px solid #5981C2; padding:4px;"> </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

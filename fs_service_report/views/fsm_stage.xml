@@ -1,0 +1,13 @@
+<odoo>
+    <record id="fsm_stage_form_view" model="ir.ui.view">
+        <field name="name">Stage</field>
+        <field name="model">fsm.stage</field>
+        <field name="inherit_id" ref="fieldservice.fsm_stage_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_closed']" position="after">
+                <field name="is_new"/>
+                <field name="is_completed"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

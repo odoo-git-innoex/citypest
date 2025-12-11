@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <template id="service_header">
+            <div class="header" style="width: 100%;">
+                <div style="width:100%; border-hidden; padding-bottom:8px;">
+                    <table style="width:100%; border:hidden;">
+                        <tr>
+                            <!-- LEFT SIDE: Logo and Company Details -->
+                            <td style="width:50%; vertical-align:top;border:hidden">
+                                <div style="font-size:15px; color:#5981C2; font-weight:bold;border:hidden">
+                                    <div style="margin-top:-10px"><img t-att-src="'data:image/png;base64,%s' % (o.company_id.logo and o.company_id.logo.decode('utf-8') or '')"
+                                        style="max-height:700px; max-width:400px;"/></div><br/>
+                                    <div style="font-size:13px; font-weight:normal;border:hidden">
+                                        Tel.: <t t-esc="o.company_id.phone or ''"/>,
+                                        Mobile: <t t-esc="o.company_id.mobile or ''"/><br/>
+                                        <t t-esc="(o.company_id.city or '')"/> -
+                                        <t t-esc="(o.company_id.country_id.name or '')"/>.
+                                        Email: <t t-esc="o.company_id.email or ''"/>
+                                    </div>
+
+                                </div>
+                            </td>
+                            <!-- RIGHT SIDE: Service Info -->
+                            <td style="width:50%; vertical-align:top; text-align:left; padding-right:10px;border-left:hidden">
+                                <div style="font-size:20px; color:#5981C2; font-weight:bold;">SERVICE REPORT</div><br/>
+                                <table style="width:100%; border:1px solid #5981C2; font-size:14px; margin-top:4px;">
+                                    <tr>
+                                        <td style="padding:5px; width:100%;">
+                                            Date: <span style="border-bottom: none; min-width:60px; display:inline-block;"><t t-esc="o.service_date.strftime('%d/%m/%Y') if o.service_date else ''"/></span>
+                                            Contract / Ac No.: <span style="border-bottom:1px solid #5981C2; min-width:60px; display:inline-block;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:5px;">
+                                            Type of Service: 
+                                            <span style="border:hidden; padding:2px 8px;">□ General Pest control</span>
+                                            <span style="border:hidden; padding:2px 8px;">□ Others</span><br/>
+                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="text-align:right;font-size:16px;">No: <span style="color:red; font-weight:bold;"><t t-esc="o.name"/></span></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="footer o_standard_footer" style="position: relative;">
+                <hr style="border-top: 2px solid #5981C2;"/>
+                <div style="text-align:center;font-weight:bold;font-size:17px;color:#5981C2">...Stay Safe!...</div>
+            </div>
+
+            <div class="article o_report_layout_standard"
+                t-att-data-oe-model="o and o._name"
+                t-att-data-oe-id="o and o.id"
+                t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+            
+        </template>
+    </data>
+</odoo>

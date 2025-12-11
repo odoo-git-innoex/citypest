@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="quotation_header">
+            <div class="header" style="width: 100%;">
+                <div style="width:100%; text-align:center; border:hidden; padding-top:10px;margin-top:-50px">
+                    <img t-att-src="'data:image/png;base64,%s' % (doc.company_id.logo and doc.company_id.logo.decode('utf-8') or '')"
+                         style="max-height:1500px; max-width:1500px;"/>
+                </div>
+                
+            </div>
+            <div class="footer" style="margin-top: 10px;">
+                <hr style="border-top: 2px solid #000; margin: 10px 0;"/>
+                <div style="text-align:center;font-weight:bold;font-size:14px">نحرص على مدينتنا وبيئتها</div><br/>
+                <div style="text-align:center;font-weight:bold;font-size:14px">We Care For The City And Its Environment</div>
+                <div style="text-align:right; font-size:15px;">
+                    Page <span class="page"/> of <span class="topage"/>
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

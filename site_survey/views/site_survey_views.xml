@@ -1,0 +1,241 @@
+<odoo>
+
+    <!-- Site Survey Views -->
+    <record id="view_site_survey_tree" model="ir.ui.view">
+        <field name="name">site.survey.tree</field>
+        <field name="model">site.survey</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="location_id"/>
+                <field name="customer_name"/>
+                <field name="locality_type"/>
+                <field name="building_type"/>
+                <field name="subcategory"/>
+                <field name="pest_type_ids" widget="many2many_tags"/>
+                <field name="pest_reported"/>
+                <!-- <field name="rbs_required"/> -->
+            </tree>
+        </field>
+    </record>
+    <!-- <record id="view_site_survey_form" model="ir.ui.view">
+        <field name="name">site.survey.form</field>
+        <field name="model">site.survey</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_submit" string="Submit" type="object" invisible="state != 'draft'"/>
+                </header>
+                <sheet>
+                    <group string="General Information">
+                        <field name="name" readonly="1"/>
+                        <field name="location_id"/>
+                        <field name="crm_lead_id" readonly="1"/>
+                        <field name="company_id"/>
+                        <field name="customer_name"/>
+                        <field name="locality_type" required="1"/>
+                        <field name="building_type" required="1"/>
+                        <field name="subcategory" required="[('building_type', 'in', ('residential', 'commercial'))]" invisible="[('building_type', '=', 'industrial')]"/>
+                        <field name="pest_type_ids" widget="many2many_tags"/>
+                    </group>
+                    <group string="Residential - Flat Details" invisible="[('building_type', '!=', 'residential'), ('subcategory', '!=', 'flat')]">
+                        <field name="flat_people_living"/>
+                        <field name="flat_sharing"/>
+                        <field name="flat_beds"/>
+                        <field name="flat_type"/>
+                    </group>
+                    <group string="Residential - Villa Details" invisible="[('building_type', '!=', 'residential'), ('subcategory', '!=', 'villa')]">
+                        <field name="villa_type"/>
+                    </group>
+                    <group string="Commercial Details" invisible="[('building_type', '!=', 'commercial')]">
+                        <field name="commercial_apartments"/>
+                        <field name="commercial_floors"/>
+                        <field name="commercial_garbage_rooms"/>
+                        <field name="commercial_water_tanks"/>
+                        <field name="commercial_lifts"/>
+                        <field name="commercial_total_area"/>
+                    </group>
+                    <group string="Hotel/Restaurant Details" invisible="[('building_type', '!=', 'commercial'), ('subcategory', 'not in', ('hotel', 'restaurant'))]">
+                        <field name="hotel_rooms"/>
+                        <field name="hotel_kitchens"/>
+                        <field name="hotel_dining_areas"/>
+                        <field name="hotel_dining_type"/>
+                    </group>
+                    <group string="Mall Details" invisible="[('building_type', '!=', 'commercial'), ('subcategory', '!=', 'mall')]">
+                        <field name="mall_outlets"/>
+                        <field name="mall_receiving_areas"/>
+                        <field name="mall_water_tanks"/>
+                    </group>
+                    <group string="Building Details">
+                        <field name="no_of_floors"/>
+                        <field name="no_of_bedrooms"/>
+                        <field name="has_basement"/>
+                        <field name="total_area"/>
+                    </group>
+                    <group string="Pest and Compliance">
+                        <field name="pest_reported"/>
+                        <field name="compliance_status"/>
+                    </group>
+                    <group string="Media">
+                        <field name="pictures" widget="many2many_binary"/>
+                        <field name="videos" widget="many2many_binary"/>
+                        <field name="retention_period"/>
+                    </group>
+                    <group string="Additional Notes">
+                        <field name="remarks"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <record id="view_site_survey_form" model="ir.ui.view">
+        <field name="name">site.survey.form</field>
+        <field name="model">site.survey</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_submit" string="Submit" type="object" invisible="state != 'draft'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="General Information">
+                            <field name="name" readonly="1"/>
+                            <field name="location_id"/>
+                            <field name="crm_lead_id" readonly="1"/>
+                            <field name="company_id"/>
+                            <field name="customer_name"/>
+                            <field name="locality_type" required="1"/>
+                            <field name="building_type" required="1"/>
+                            <field name="subcategory" required="[('building_type', 'in', ('residential', 'commercial'))]" invisible="[('building_type', '=', 'industrial')]"/>
+                            <field name="pest_type_ids" widget="many2many_tags"/>
+                            <field name="infestation_level"/>
+                        </group>
+                        <group string="Building Details">
+                            <field name="no_of_floors"/>
+                            <field name="no_of_bedrooms"/>
+                            <field name="has_basement"/>
+                            <field name="total_area"/>
+                            <field name="pest_reported"/>
+                            <field name="compliance_status"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Entry Points Observation">
+                            <field name="entry_points_observation"/>
+                        </page>
+                        <page string="Residential Details" invisible="[('building_type', '!=', 'residential')]">
+                            <group string="Flat Details" invisible="[('subcategory', '!=', 'flat')]">
+                                <group>
+                                    <field name="flat_people_living"/>
+                                    <field name="flat_sharing"/>
+                                </group>
+                                <group>
+                                    <field name="flat_beds"/>
+                                    <field name="flat_type"/>
+                                </group>
+                            </group>
+                            <group string="Villa Details" invisible="[('subcategory', '!=', 'villa')]">
+                                <field name="villa_type"/>
+                            </group>
+                        </page>
+
+                        <page string="Commercial Details" invisible="[('building_type', '!=', 'commercial')]">
+                            <group>
+                                <group string="General Commercial Info">
+                                    <field name="commercial_apartments"/>
+                                    <field name="commercial_floors"/>
+                                    <field name="commercial_total_area"/>
+                                </group>
+                                <group>
+                                    <field name="commercial_garbage_rooms"/>
+                                    <field name="commercial_water_tanks"/>
+                                    <field name="commercial_lifts"/>
+                                </group>
+                            </group>
+
+                            <separator string="Specific Commercial Type Details"/>
+
+                            <group string="Hotel/Restaurant Details" invisible="[('subcategory', 'not in', ('hotel', 'restaurant'))]">
+                                <group>
+                                    <field name="hotel_rooms"/>
+                                    <field name="hotel_kitchens"/>
+                                </group>
+                                <group>
+                                    <field name="hotel_dining_areas"/>
+                                    <field name="hotel_dining_type"/>
+                                </group>
+                            </group>
+                            
+                            <group string="Mall Details" invisible="[('subcategory', '!=', 'mall')]">
+                                <group>
+                                    <field name="mall_outlets"/>
+                                    <field name="mall_receiving_areas"/>
+                                </group>
+                                <group>
+                                    <field name="mall_water_tanks"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Media &amp; Notes">
+                            <group string="Media">
+                                <field name="pictures" widget="many2many_binary"/>
+                                <field name="videos" widget="many2many_binary"/>
+                                <field name="retention_period"/>
+                            </group>
+                            <group string="Additional Notes">
+                                <field name="remarks"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_site_survey_search" model="ir.ui.view">
+        <field name="name">site.survey.search</field>
+        <field name="model">site.survey</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="location_id"/>
+                <field name="locality_type"/>
+                <field name="building_type"/>
+                <field name="subcategory"/>
+                <field name="pest_type_ids"/>
+                <field name="pest_reported"/>
+                <field name="compliance_status"/>
+                <filter string="Individual" name="individual" domain="[('locality_type', '=', 'individual')]"/>
+                <filter string="Community" name="community" domain="[('locality_type', '=', 'community')]"/>
+                <filter string="Residential" name="residential" domain="[('building_type', '=', 'residential')]"/>
+                <filter string="Commercial" name="commercial" domain="[('building_type', '=', 'commercial')]"/>
+                <filter string="Industrial" name="industrial" domain="[('building_type', '=', 'industrial')]"/>
+                <filter string="Pest Reported" name="pest_reported" domain="[('pest_reported', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_site_survey" model="ir.actions.act_window">
+        <field name="name">Site Surveys</field>
+        <field name="res_model">site.survey</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_site_survey_search"/>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="action_lead_site_survey" model="ir.actions.act_window">
+        <field name="name">Site Surveys</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('stage_id.is_site_survey', '=', True)]</field>
+    </record>
+
+
+    <menuitem id="root_lead_site_survey" name="Site Survey" action="action_lead_site_survey" parent = "crm.crm_menu_sales" sequence="5"/>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add Lead and Customer fields -->
+    <record id="fsm_order_form_inherit_add_lead_customer" model="ir.ui.view">
+        <field name="name">fsm.order.form.inherit.add.lead.customer</field>
+        <field name="model">fsm.order</field>
+        <field name="inherit_id" ref="fieldservice.fsm_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/group[field[@name='template_id']]/field[@name='template_id']" position="after">
+                <field name="lead_id" options="{'no_create': True}" readonly="context.get('default_lead_id')"/>
+	        <field name="customer_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add smart button in header -->
+    <record id="fsm_order_form_inherit_add_service_report_button" model="ir.ui.view">
+        <field name="name">fsm.order.form.inherit.service.report.button</field>
+        <field name="model">fsm.order</field>
+        <field name="inherit_id" ref="fieldservice.fsm_order_form"/>
+        <field name="arch" type="xml">
+            <header>
+                <button name="action_create_service_report"
+                        type="object"
+                        string="Create Service Report"
+                        class="oe_highlight"
+                        groups="fieldservice.group_fsm_user"
+                        invisible="not is_completed"
+                />
+            </header>
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_view_service_report" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="service_report_count == 0">
+                    <field name="service_report_count" string="Service Report" widget="statinfo"/>
+                </button>
+            </xpath>
+            <xpath expr="//button[@name='action_complete']" position="attributes">
+                <attribute name="invisible">not is_new</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="invisible">not is_new</attribute>
+            </xpath>
+            <xpath expr="//field[@name='person_id']" position="after">
+                <field name="is_new" invisible="1"/>
+                <field name="is_completed" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

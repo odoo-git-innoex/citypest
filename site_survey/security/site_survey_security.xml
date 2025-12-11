@@ -1,0 +1,19 @@
+<odoo>
+    <record id="model_site_survey" model="ir.model">
+        <field name="name">Site Survey</field>
+        <field name="model">site.survey</field>
+    </record>
+    <record id="model_site_survey_pest" model="ir.model">
+        <field name="name">Site Survey Pest</field>
+        <field name="model">site.survey.pest</field>
+    </record>
+    <record id="model_site_survey_residential_line" model="ir.model">
+        <field name="name">Site Survey Residential Line</field>
+        <field name="model">site.survey.residential.line</field>
+    </record>
+    <record id="model_site_survey_commercial_line" model="ir.model">
+        <field name="name">Site Survey Commercial Line</field>
+        <field name="model">site.survey.commercial.line</field>
+    </record>
+</odoo>
+

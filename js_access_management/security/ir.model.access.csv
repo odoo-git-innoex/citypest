@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_access_management,js_access_management.access.management,model_access_management,,1,1,1,1
+access_remove_action,js_access_management.remove.action,model_remove_action,,1,1,1,1
+access_hide_field,js_access_management.hide.field,model_hide_field,,1,1,1,1
+access_action_data,js_access_management.action.data,model_action_data,,1,1,1,1

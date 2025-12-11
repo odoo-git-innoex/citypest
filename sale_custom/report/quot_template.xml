@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="quotation_template_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout"> 
+                <t t-call="sale_custom.quotation_header"/>
+                    <div class="page" style="font-family: Arial;">
+                    <div style="font-size:16px; border-top:1px solid black; padding-top:4px;text-align:center">
+                        <strong>TEL:</strong> <t t-esc="doc.partner_id.phone or ''"/>,
+                        <strong>MOBILE:</strong> <t t-esc="doc.partner_id.mobile or ''"/>,
+                        <strong>P.O.BOX:</strong> <t t-esc="doc.partner_id.zip or ''"/>,
+                        <t t-esc="doc.partner_id.city or ''"/>, <t t-esc="doc.partner_id.country_id.name or ''"/>
+                        <br/>
+                        <strong>E-mail:</strong> <t t-esc="doc.partner_id.email or ''"/>,
+                        <t t-if="doc.partner_id.website">
+                            <strong>Website:</strong> <t t-esc="doc.partner_id.website"/>
+                        </t>
+                    </div>
+
+                        <div style="text-align:center; font-weight:bold; font-size:22px; margin-top:10px;">
+                            <u>QUOTATION</u>
+                        </div><br/>
+                        <table style="width:100%; border-collapse:collapse; margin-top:10px; font-size:15px;">
+                            <tr style="border:1px solid black">
+                                <td style="padding:3px; width:60%;"><strong><t t-esc="doc.partner_id.name"/></strong></td>
+                                <td style="padding:3px; width:10%;border-left:1px solid black"><strong>Ref:</strong></td>
+                                <td style="padding:3px;border-left:1px solid black"><t t-esc="doc.name"/></td>
+                            </tr>
+
+                            <tr style="border:1px solid black">
+                                <td style="padding:3px;"><strong>P.O.Box:<t t-esc="doc.partner_id.zip"/></strong></td>
+                                <td style="padding:3px;border-left:1px solid black"><strong>Date:</strong></td>
+                                <td style="padding:3px;border-left:1px solid black"><t t-esc="doc.date_order.strftime('%d-%m-%Y')"/></td>
+                            </tr>
+
+                            <tr style="border:1px solid black">
+                                <td style="padding:3px; width:50%;"><strong><t t-esc="doc.partner_id.state_id.name"/> - <t t-esc="doc.partner_id.country_id.name"/></strong></td>
+                                <td style="padding:3px;border-left:1px solid black"><strong>Tel:</strong></td>
+                                <td style="padding:3px;border-left:1px solid black"><t t-esc="doc.partner_id.phone or ''"/></td>
+                            </tr>
+
+                            <tr style="border:1px solid black">
+                                <td style="padding:3px;"><strong>Atten : <t t-esc="doc.user_id.name or ''"/></strong></td>
+                                <td style="padding:3px;border-left:1px solid black"><strong>E-mail:</strong></td>
+                                <td style="padding:3px;border-left:1px solid black"><t t-esc="doc.partner_id.email or ''"/></td>
+                            </tr>
+                        </table><br/>
+                        <p style="font-size:16px; margin-top:20px;font-weight:bold">
+                            Dear Sir,
+                        </p>
+
+                        <p style="font-size:16px; margin-top:10px;">
+                            <strong>Sub:</strong>
+                            <span style="text-decoration: underline;">
+                                <t t-esc="doc.sub"/>
+                            </span>
+                        </p>
+
+                        <p style="font-size:16px; margin-top:5px;">
+                            <strong>Ref:</strong>
+                            <span style="text-decoration: underline;">
+                                <t t-esc="doc.ref"/>
+                            </span>
+                        </p>
+
+                        <p style="font-size:19px; text-align:justify; margin-top:15px; line-height:20px;">
+                            We thank you for giving us an opportunity to submit our offer to carry out 
+                            <strong>Pest Control Service</strong> against all crawling insects, flying insects, rodents etc.
+                            We will use chemicals that are approved by Dubai Municipality as we are in the 
+                            <strong>A Grade in the DM work standard.</strong>
+                        </p>
+
+                    <br/>
+                   <table style="width:100%; border-collapse:collapse; margin-top:20px; font-size:18px;">
+                        <thead>
+                            <tr style="text-align:center; border:1px solid black;">
+                                <th style="border:1px solid black; padding:4px; width:5%;">S.No.</th>
+                                <th style="border:1px solid black; padding:4px; width:45%;">Description</th>
+                                <th style="border:1px solid black; padding:4px; width:10%;">Unit</th>
+                                <th style="border:1px solid black; padding:4px; width:8%;">Qty</th>
+                                <th style="border:1px solid black; padding:4px; width:12%;">Rate</th>
+                                <th style="border:1px solid black; padding:4px; width:15%;">Amount</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <t t-foreach="doc.order_line" t-as="line" t-esc-options='{"widget": "float"}'>
+
+                                <!-- 🔵 SECTION LINE (Odoo default) -->
+                                <t t-if="line.display_type == 'line_section'">
+                                    <tr style="border:1px solid black; background:#f2f2f2; font-weight:bold;">
+                                        <td style="border:1px solid black;"></td>
+                                        <td colspan="5" style="border:1px solid black; padding:6px;">
+                                            <t t-esc="line.name"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <!-- 🟢 NOTE LINE (Odoo default) -->
+                                <t t-if="line.display_type == 'line_note'">
+                                    <tr style="border:1px solid black;">
+                                        <td style="border:1px solid black;"></td>
+                                        <td colspan="5" style="border:1px solid black; padding:6px;">
+                                            <strong> <t t-esc="line.name"/></strong>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <!-- 🟠 NORMAL PRODUCT LINE -->
+                                <t t-if="not line.display_type">
+                                    <tr style="border:1px solid black; font-size:16px;">
+                                        <td style="border:1px solid black; padding:4px; text-align:center;">
+                                            <t t-esc="line_index + 1"/>
+                                        </td>
+
+                                        <td style="border:1px solid black; padding:4px;">
+                                            <t t-esc="line.name"/>
+                                        </td>
+
+                                        <td style="border:1px solid black; padding:4px; text-align:center;">
+                                            <t t-esc="line.product_uom.name"/>
+                                        </td>
+
+                                        <td style="border:1px solid black; padding:4px; text-align:center;">
+                                            <t t-esc="line.product_uom_qty"/>
+                                        </td>
+
+                                        <td style="border:1px solid black; padding:4px; text-align:right;">
+                                            <t t-esc="line.price_unit"/>
+                                        </td>
+
+                                        <td style="border:1px solid black; padding:4px; text-align:right;">
+                                            <t t-esc="line.price_subtotal"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                            </t>
+
+                            <tr>
+                                <td style="border:1px solid black; padding:4px; width:5%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:45%;font-weight:bold">Total</td>
+                                <td style="border:1px solid black; padding:4px; width:10%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:8%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:12%;"></td>
+                                <td style="border:1px solid black; padding:6px; text-align:right; width:15%;font-weight:bold">
+                                    <t t-esc="doc.amount_untaxed"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="border:1px solid black; padding:4px; width:5%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:45%;font-weight:bold">5% Vat</td>
+                                <td style="border:1px solid black; padding:4px; width:10%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:8%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:12%;"></td>
+                                <td style="border:1px solid black; padding:6px; text-align:right;font-weight:bold">
+                                    <t t-esc="doc.amount_tax"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="border:1px solid black; padding:4px; width:5%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:45%;font-weight:bold">Grand Total</td>
+                                <td style="border:1px solid black; padding:4px; width:10%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:8%;"></td>
+                                <td style="border:1px solid black; padding:4px; width:12%;"></td>
+                                <td style="border:1px solid black; padding:6px; text-align:right; font-weight:bold;">
+                                    <t t-esc="doc.amount_total"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top:20px;font-weight:bold;font-size:18px;">
+                        <p>
+                            Payment: <t t-esc="doc.payment_term_id.name or 'Quarterly, upon completion of each service and submission of our invoice.'"/>
+                        </p>
+                        <p>
+                            Hope you will find our proposal suitable and if you accept our quotation, please confirm by return E-mail or send PO.
+                        </p><br/>
+                        <p>
+                            Yours faithfully,
+                            <br/><br/>
+                            <t t-esc="doc.user_id.name or ''"/> <t t-esc="doc.user_id.mobile or ''"/>
+                        </p>
+                        <p>
+                            <!-- <t t-if="doc.company_id.stamp_image">
+                                <img t-att-src="'/web/image/res.company/' + str(doc.company_id.id) + '/stamp_image'"/>
+                            </t> -->
+                        </p>
+                    </div>
+
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,9 @@
+<odoo>
+    <menuitem
+        id="menu_field_service_report"
+        name="Service Reports"
+        parent="fieldservice.reporting"
+        action="fs_service_report.view_field_service_report_action"
+        sequence="99"
+        groups="base.group_user"/>
+</odoo>
