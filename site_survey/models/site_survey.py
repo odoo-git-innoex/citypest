@@ -6,7 +6,8 @@ class SiteSurvey(models.Model):
     _name = "site.survey"
     _description = "Site Survey"
 
-    name = fields.Char(string="Survey Name", required=True, default="New")
+    name = fields.Char(string="Name", required=True, default="New")
+    survey_name = fields.Char(string="Survey Name", required=True)
     location_id = fields.Many2one("fsm.location", string="Location", ondelete="cascade")
     crm_lead_id = fields.Many2one("crm.lead", string="CRM Lead", ondelete="set null")
     customer_name = fields.Char(string="Customer Name", readonly=True)
