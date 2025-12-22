@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
                 <button name="action_site_survey" string="Move to Site Survey" type="object" class="oe_highlight" invisible="not is_new"/>
-                <button name="create_site_survey" string="Create Survey" type="object" class="oe_highlight" invisible="not is_site_survey"/>
+                <button name="create_site_survey" string="Create Survey" type="object" class="oe_highlight" invisible="not is_site_survey or survey_count!=0"/>
             </xpath>
             <xpath expr="//div[@class='oe_button_box']" position="inside">
                 <button class="oe_stat_button" type="object" invisible="survey_count==0"
