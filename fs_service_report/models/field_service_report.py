@@ -79,7 +79,7 @@ class FieldServiceReport(models.Model):
                                         ('residential', 'Residential'),
                                         ('commercial', 'Commercial'),
                                         ('industrial', 'Industrial'),
-                                    ], string="Building Type", required=True)
+                                    ], string="Building Type")
     building_space = fields.Text(string="Building Space/Side")
     entry_points_observation = fields.Html(string="Entry Points Observation")
     followup_recommendation_ids = fields.Many2many('followup.recommendation', string='Followup Recommendation')
