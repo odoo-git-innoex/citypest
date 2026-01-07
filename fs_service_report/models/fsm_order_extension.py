@@ -10,9 +10,7 @@ class FSMOrder(models.Model):
     is_completed = fields.Boolean(string="Is Completed",related="stage_id.is_completed")
     service_report_count = fields.Integer(string="Service Report Count", compute='_compute_service_report_count')
     method_application_id = fields.Many2one('method.application', string='Method Application')
-    location_id = fields.Many2one(
-        "fsm.location", string="Location", related='lead_id.fsm_location_id',index=True, required=True, readonly=False
-    )
+
 
     def _compute_service_report_count(self):
         for order in self:
@@ -22,6 +20,12 @@ class FSMOrder(models.Model):
     def _onchange_lead_id(self):
         if self.lead_id:
             self.customer_id = self.lead_id.partner_id.id or False
+
+    @api.onchange('customer_id')
+    def _onchange_customer_id(self):
+        if self.customer_id:
+            location_id = self.env['fsm.location'].search([('partner_id', 'in', self.customer_id.child_ids.ids)], limit=1)
+            self.location_id = location_id.id or False
 
     def action_create_service_report(self):
         self.ensure_one()

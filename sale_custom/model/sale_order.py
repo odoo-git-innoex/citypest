@@ -79,14 +79,8 @@ class SaleOrder(models.Model):
         tracking=3,
         default='draft')
 
-    sub = fields.Char(
-        string='Sub',
-        default='Quotation for Annual Pest Control Service in DBB Bulgarie Light House Project AD9317 @ Jumerian Bay'
-    )
-    ref = fields.Char(
-        string='Ref',
-        default='The Survey we made today.'
-    )
+    sub = fields.Char(string='Sub')
+    ref = fields.Char(string='Ref')
 
     def action_confirm(self):
         if self.state in ['sent', 'draft']:

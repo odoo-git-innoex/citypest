@@ -3,9 +3,9 @@
     <data>
         <template id="quotation_header">
             <div class="header" style="width: 100%;">
-                <div style="width:100%; text-align:center; border:hidden; padding-top:10px;margin-top:-50px">
+                <div style="width:100%; text-align:center; border:hidden; padding-top:40px;margin-top:-50px">
                     <img t-att-src="'data:image/png;base64,%s' % (doc.company_id.logo and doc.company_id.logo.decode('utf-8') or '')"
-                         style="max-height:1500px; max-width:1500px;"/>
+                         style="max-height:450px; max-width:450px;"/>
                 </div>
                 
             </div>

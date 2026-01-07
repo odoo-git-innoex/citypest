@@ -7,9 +7,12 @@
         <field name="inherit_id" ref="fieldservice.fsm_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group/group[field[@name='template_id']]/field[@name='template_id']" position="after">
-                <field name="lead_id" options="{'no_create': True}" readonly="context.get('default_lead_id')"/>
-	        <field name="customer_id" readonly="1"/>
+                <field name="lead_id" options="{'no_create': True}" readonly="context.get('default_lead_id')" invisible="not lead_id"/>
+	        <field name="customer_id" readonly="lead_id"/>
             </xpath>
+            <!-- <field name="location_id" position="attributes">
+                <attribute name="domain">[('partner_id.parent_id', '=', customer_id)]</attribute>
+            </field> -->
         </field>
     </record>
 
