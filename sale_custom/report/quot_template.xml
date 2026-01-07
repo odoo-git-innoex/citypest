@@ -6,7 +6,7 @@
                 <t t-call="web.basic_layout"> 
                 <t t-call="sale_custom.quotation_header"/>
                     <div class="page" style="font-family: Arial;">
-                    <div style="font-size:16px; border-top:1px solid black; padding-top:4px;text-align:center">
+                    <div style="font-size:16px; border-top:1px solid black; padding-top:10px;text-align:center">
                         <strong>TEL:</strong> <t t-esc="doc.partner_id.phone or ''"/>,
                         <strong>MOBILE:</strong> <t t-esc="doc.partner_id.mobile or ''"/>,
                         <strong>P.O.BOX:</strong> <t t-esc="doc.partner_id.zip or ''"/>,
