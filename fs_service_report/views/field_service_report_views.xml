@@ -62,7 +62,7 @@
                         <field name="building_space" nolabel="1" colspan="2" />
                     </group>
                     <notebook>
-                        <page string="Entry Points Observation">
+                        <page string="Description Of Services">
                             <field name="report_details" widget="html" />
                         </page>
                         <page string="Recommendations/Remarks">

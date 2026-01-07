@@ -9,8 +9,8 @@
 
                         <!-- Logo -->
                         <td style="width:50%; border:hidden; vertical-align:top;">
-                            <div style="margin-top:-40px"><img t-att-src="'data:image/png;base64,%s' % (o.company_id.logo and o.company_id.logo.decode('utf-8') or '')"
-                                 style="max-height:700px; max-width:700px;"/></div>
+                            <div style="margin-top:-20px"><img t-att-src="'data:image/png;base64,%s' % (o.company_id.logo and o.company_id.logo.decode('utf-8') or '')"
+                                 style="max-height:500px; max-width:500px;"/></div>
                         </td>
 
                         <!-- Company Details -->

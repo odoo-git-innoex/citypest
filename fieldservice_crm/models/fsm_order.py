@@ -19,6 +19,7 @@ class FSMOrder(models.Model):
         store=True,
     )
 
+
     @api.model_create_multi
     def create(self, vals_list):
         if self._has_dispacher_group():
