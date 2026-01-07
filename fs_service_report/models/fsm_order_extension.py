@@ -10,6 +10,9 @@ class FSMOrder(models.Model):
     is_completed = fields.Boolean(string="Is Completed",related="stage_id.is_completed")
     service_report_count = fields.Integer(string="Service Report Count", compute='_compute_service_report_count')
     method_application_id = fields.Many2one('method.application', string='Method Application')
+    location_id = fields.Many2one(
+        "fsm.location", string="Location", related='lead_id.fsm_location_id',index=True, required=True, readonly=False
+    )
 
     def _compute_service_report_count(self):
         for order in self:

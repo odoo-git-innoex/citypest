@@ -47,7 +47,7 @@
                             />
                             <field
                                 name="type"
-                                options="{'no_create': True, 'no_open': True}"
+                                options="{'no_create': True, 'no_open': True}" invisible="1"
                             />
                             <field name="priority" widget="priority" />
                             <field

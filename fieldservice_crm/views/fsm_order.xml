@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="fieldservice.fsm_order_tree_view" />
         <field name="arch" type="xml">
             <field name="person_id" position="before">
-                <field name="opportunity_id" />
+                <field name="opportunity_id" invisible="1"/>
             </field>
         </field>
     </record>
@@ -17,7 +17,7 @@
         <field name="inherit_id" ref="fieldservice.fsm_order_form" />
         <field name="arch" type="xml">
             <field name="priority" position="before">
-                <field name="opportunity_id" />
+                <field name="opportunity_id" invisible="1"/>
                 <field
                     name="sales_person_id"
                     groups="fieldservice.group_fsm_dispatcher"

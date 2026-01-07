@@ -5,3 +5,4 @@ class AccountMove(models.Model):
 
     do_number = fields.Char(string="D.O. No.")
     lpo_number = fields.Char(string="L.P.O. No.")
+    service_date = fields.Datetime('Service Date')
