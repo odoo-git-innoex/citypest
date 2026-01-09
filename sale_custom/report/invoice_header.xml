@@ -20,7 +20,7 @@
                             </p>
 
                             <p style="margin:0; font-size:14px;">
-                                P.O.Box: <t t-esc="o.company_id.zip"/>,<t t-esc="o.company_id.state_id.name"/>,<t t-esc="o.company_id.country_id.name"/>
+                                P.O.Box:  <t t-esc="o.company_id.street"/> <t t-esc="o.company_id.street2"/> <t t-esc="o.company_id.zip"/> <t t-esc="o.company_id.state_id.name"/> <t t-esc="o.company_id.country_id.name"/>
                             </p>
 
                             <p style="margin:0; font-size:14px;">
@@ -41,6 +41,22 @@
             </div>
 
             <div class="footer" style="">
+                <div class="invoice-footer" style="margin-top:30px;">
+                    <table style="width:100%;border:hidden">
+                        <tr>
+                            <td style="border:hidden;width:50%; vertical-align:top;">
+                                <span style="font-weight:bold;">Prepared by :</span>
+                                <span style="text-align:right; margin-left:15px;">__________________________________________</span>
+                                <span style="margin-left:15px;">إعداد</span>
+                            </td>
+                            <td style="border:hidden;width:50%; vertical-align:top;">
+                                <span style="font-weight:bold;">Received by :</span>
+                                <span style="text-align:right; margin-left:10px;">__________________________________________</span>
+                                <span style="margin-left:15px;">المستلم</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <hr style="border-top: 2px solid #000; margin: 10px 0;"/>
                 <div style="text-align:center;">
                     <t t-esc="o.company_id.website"/>
