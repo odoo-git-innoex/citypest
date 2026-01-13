@@ -42,9 +42,14 @@
 
             <div class="footer" style="font-family: Tahoma, Verdana, Segoe, sans-serif;">
                 <div class="invoice-footer" style="margin-top:30px;">
-                    <table style="width:100%; border:hidden;">
+                    <table style="width:100%;" class="table table-borderless">
                         <tr>
-                            <td style="width:40%; border:hidden; vertical-align:top;">
+                            <td style="width:30%; vertical-align:bottom; text-align:center;">
+                                <div style="margin-top: 20px;">
+                                    <span>Receiver's Name &amp; Signature</span>
+                                </div>
+                            </td>
+                            <td style="width:40%; border-left:1px solid black;border-right:1px solid black; vertical-align:top;">
                                 <div style="border-bottom: 1px solid black; width: fit-content; margin-bottom: 5px;">
                                     <span style="font-weight:bold;">Payment Info:</span>
                                 </div>
@@ -76,14 +81,11 @@
                                     </tr>
                                 </table>
                             </td>
-                            <!-- <td style="width:60%; border:hidden; vertical-align:bottom; text-align:right;">
+                            <td style="width:30%; border-left:1px solid black; vertical-align:bottom; text-align:center;">
                                 <div style="margin-bottom: 10px;">
-                                    <span style="font-weight:bold;">For CRESCENT SILK SCREEN</span>
+                                    <span>For CRESCENT SILK SCREEN</span>
                                 </div>
-                                <div style="margin-top: 20px;">
-                                    <span>Receiver's Name &amp; Signature</span>
-                                </div>
-                            </td> -->
+                            </td>
                         </tr>
                     </table>
                 </div>
