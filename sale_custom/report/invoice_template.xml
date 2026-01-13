@@ -161,56 +161,56 @@
                                     <div>
                                         الرقم
                                         </div>
-                                        <div>
-                                        <span style="padding-top:2px;">No.</span>
+                                        <div style="padding-top:6px;">
+                                        <span>No.</span>
                                     </div>
                                     </th>
                                     <th style="width:40%; border:1px solid black;">
                                     <div>
                                         التفاصيل
                                         </div>
-                                        <div>
-                                        <span style="padding-top:2px;">DESCRIPTION</span>
+                                        <div style="padding-top:6px;">
+                                        <span>DESCRIPTION</span>
                                     </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
                                     <div>
                                         الكمية
                                         </div>
-                                        <div>
-                                        <span style="padding-top:2px;">Qty</span>
+                                        <div style="padding-top:6px;">
+                                        <span>Qty</span>
                                     </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
                                     <div>
                                         الوحدة
                                         </div>
-                                        <div>
-                                        <span style="padding-top:2px;">UOM</span>
+                                        <div style="padding-top:6px;">
+                                        <span>UOM</span>
                                     </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
                                     <div>
                                         السعر
                                         </div>
-                                        <div>
-                                        <span style="padding-top:2px;">U. Price</span>
+                                        <div style="padding-top:6px;">
+                                        <span>U. Price</span>
                                     </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
                                     <div>
                                         الضريبة
                                         </div>
-                                        <div>
-                                        <span style="padding-top:2px;">VAT (5%)</span>
+                                        <div style="padding-top:6px;">
+                                        <span>VAT (5%)</span>
                                     </div>
                                     </th>
                                     <th style="width:15%; border:1px solid black;">
                                     <div>
                                         المبلغ
                                         </div>
-                                        <div>
-                                        <span style="padding-top:2px;">Amount</span>
+                                        <div style="padding-top:6px;">
+                                        <span>Amount</span>
                                     </div>
                                     </th>
                                 </tr>
