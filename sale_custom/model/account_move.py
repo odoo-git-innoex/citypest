@@ -13,6 +13,7 @@ class AccountMove(models.Model):
             sale_order = record.invoice_line_ids.sale_line_ids.order_id
             fieldservice = sale_order.fsm_order_ids
             if fieldservice:
-                do_number = fieldservice[0].name
+                servic_report = self.env['field.service.report'].search([('field_service_order_id', '=', fieldservice[0].id)], limit=1)
+                do_number = servic_report.name or fieldservice[0].name
             record.do_number = do_number
 
