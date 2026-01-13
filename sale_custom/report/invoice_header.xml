@@ -44,19 +44,14 @@
                 <div class="invoice-footer" style="margin-top:30px;">
                     <table style="width:100%;" class="table table-borderless">
                         <tr>
-                            <td style="width:30%; vertical-align:bottom; text-align:center;">
-                                <div style="margin-top: 20px;">
-                                    <span>Receiver's Name &amp; Signature</span>
-                                </div>
-                            </td>
-                            <td style="width:40%; border-left:1px solid black;border-right:1px solid black; vertical-align:top;">
+                            <td style="width:65%;border-right:1px solid black; vertical-align:top;">
                                 <div style="border-bottom: 1px solid black; width: fit-content; margin-bottom: 5px;">
                                     <span style="font-weight:bold;">Payment Info:</span>
                                 </div>
-                                <table style="width:100%; border:hidden; font-size:13px;">
+                                <table style="width:100%; border:hidden; font-size:14px;">
                                     <tr>
-                                        <td style="width:35%; border:hidden;">Account Name</td>
-                                        <td style="width:5%; border:hidden;">:</td>
+                                        <td style="width:20%; border:hidden;">Account Name</td>
+                                        <td style="width:3%; border:hidden;">:</td>
                                         <td style="border:hidden;">CITY PEST CONTROL AND BUILDING CLEANING SERVICES L.L.C</td>
                                     </tr>
                                     <tr>
@@ -81,31 +76,31 @@
                                     </tr>
                                 </table>
                             </td>
-                            <td style="width:30%; border-left:1px solid black; vertical-align:bottom; text-align:center;">
-                                <div style="margin-bottom: 10px;">
-                                    <span>For CRESCENT SILK SCREEN</span>
+                            <td style="width:35%; border-left:1px solid black; vertical-align:bottom; text-align:left;font-size:13px;">
+                                <div>
+                                    <span style="font-weight:bold;">Prepared by :</span>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <span style="text-align:right; margin-left:5px;">_________________________________</span>
+                                    <span style="margin-left:5px;">:إعداد</span>
+                                </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div>
+                                    <span style="font-weight:bold;">Received by :</span>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <span style="text-align:right; margin-left:4px;">_________________________________</span>
+                                    <span style="margin-left:3px;">:المستلم</span>
                                 </div>
                             </td>
                         </tr>
                     </table>
                 </div>
 
-                <div class="invoice-footer" style="margin-top:30px;">
-                    <table style="width:100%;border:hidden;font-size:14px;">
-                        <tr>
-                            <td style="border:hidden;width:50%; vertical-align:top;">
-                                <span style="font-weight:bold;">Prepared by :</span>
-                                <span style="text-align:right; margin-left:10px;">_____________________________________</span>
-                                <span style="margin-left:10px;">إعداد</span>
-                            </td>
-                            <td style="border:hidden;width:50%; vertical-align:top;">
-                                <span style="font-weight:bold;">Received by :</span>
-                                <span style="text-align:right; margin-left:10px;">_____________________________________</span>
-                                <span style="margin-left:10px;">المستلم</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
                 <hr style="border-top: 2px solid #000; margin: 10px 0;"/>
                 <div style="text-align:center;">
                     <t t-esc="o.company_id.website"/>
