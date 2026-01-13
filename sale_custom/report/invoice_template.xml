@@ -5,7 +5,7 @@
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.basic_layout">
                     <t t-call="sale_custom.tax_invoice_header" />
-                    <div class="page">
+                    <div class="page" style="font-family: Tahoma, Verdana, Segoe, sans-serif;">
                         <div style="text-align:center;border:1px solid black;font-size:20px;font-weight:bold;padding-top:10px;padding-bottom:10px;">TAX INVOICE / فاتورة ضريبية</div>
                         <table width="100%" style="margin-top:20px; border:1px solid black; border-collapse:collapse; font-size:13px;">
                             <tr>
@@ -158,39 +158,60 @@
                             <thead>
                                 <tr>
                                     <th style="width:5%; border:1px solid black;">
+                                    <div>
                                         الرقم
-                                        <br />
-                                        No.
+                                        </div>
+                                        <div>
+                                        <span style="padding-top:2px;">No.</span>
+                                    </div>
                                     </th>
                                     <th style="width:40%; border:1px solid black;">
+                                    <div>
                                         التفاصيل
-                                        <br />
-                                        DESCRIPTION
+                                        </div>
+                                        <div>
+                                        <span style="padding-top:2px;">DESCRIPTION</span>
+                                    </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
+                                    <div>
                                         الكمية
-                                        <br />
-                                        Qty
+                                        </div>
+                                        <div>
+                                        <span style="padding-top:2px;">Qty</span>
+                                    </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
+                                    <div>
                                         الوحدة
-                                        <br />
-                                        UOM
+                                        </div>
+                                        <div>
+                                        <span style="padding-top:2px;">UOM</span>
+                                    </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
+                                    <div>
                                         السعر
-                                        <br />
-                                        U. Price
+                                        </div>
+                                        <div>
+                                        <span style="padding-top:2px;">U. Price</span>
+                                    </div>
                                     </th>
                                     <th style="width:10%; border:1px solid black;">
+                                    <div>
                                         الضريبة
-                                        <br />
-                                        VAT (5%)
+                                        </div>
+                                        <div>
+                                        <span style="padding-top:2px;">VAT (5%)</span>
+                                    </div>
                                     </th>
                                     <th style="width:15%; border:1px solid black;">
+                                    <div>
                                         المبلغ
-                                        <br />
-                                        Amount
+                                        </div>
+                                        <div>
+                                        <span style="padding-top:2px;">Amount</span>
+                                    </div>
                                     </th>
                                 </tr>
                             </thead>

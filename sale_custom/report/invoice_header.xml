@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="tax_invoice_header">
-            <div class="header" style="width: 100%;">
+            <div class="header" style="width: 100%;font-family: Tahoma, Verdana, Segoe, sans-serif;">
 
                 <table style="width:100%; border-collapse: collapse; border:hidden;">
                     <tr>
@@ -40,19 +40,66 @@
                 </table>
             </div>
 
-            <div class="footer" style="">
+            <div class="footer" style="font-family: Tahoma, Verdana, Segoe, sans-serif;">
                 <div class="invoice-footer" style="margin-top:30px;">
-                    <table style="width:100%;border:hidden">
+                    <table style="width:100%; border:hidden;">
+                        <tr>
+                            <td style="width:40%; border:hidden; vertical-align:top;">
+                                <div style="border-bottom: 1px solid black; width: fit-content; margin-bottom: 5px;">
+                                    <span style="font-weight:bold;">Payment Info:</span>
+                                </div>
+                                <table style="width:100%; border:hidden; font-size:13px;">
+                                    <tr>
+                                        <td style="width:35%; border:hidden;">Account Name</td>
+                                        <td style="width:5%; border:hidden;">:</td>
+                                        <td style="border:hidden;">CRESCENT SILK SCREEN</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:hidden;">Bank Name</td>
+                                        <td style="border:hidden;">:</td>
+                                        <td style="border:hidden;">RAK Bank</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:hidden;">Account Number</td>
+                                        <td style="border:hidden;">:</td>
+                                        <td style="border:hidden;">0036413604061</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:hidden;">Iban No.</td>
+                                        <td style="border:hidden;">:</td>
+                                        <td style="border:hidden;">Ae06040000000036413604061</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:hidden;">Swift Code</td>
+                                        <td style="border:hidden;">:</td>
+                                        <td style="border:hidden;">NRAKAEAK</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <!-- <td style="width:60%; border:hidden; vertical-align:bottom; text-align:right;">
+                                <div style="margin-bottom: 10px;">
+                                    <span style="font-weight:bold;">For CRESCENT SILK SCREEN</span>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <span>Receiver's Name &amp; Signature</span>
+                                </div>
+                            </td> -->
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="invoice-footer" style="margin-top:30px;">
+                    <table style="width:100%;border:hidden;font-size:14px;">
                         <tr>
                             <td style="border:hidden;width:50%; vertical-align:top;">
                                 <span style="font-weight:bold;">Prepared by :</span>
-                                <span style="text-align:right; margin-left:15px;">__________________________________________</span>
-                                <span style="margin-left:15px;">إعداد</span>
+                                <span style="text-align:right; margin-left:10px;">_____________________________________</span>
+                                <span style="margin-left:10px;">إعداد</span>
                             </td>
                             <td style="border:hidden;width:50%; vertical-align:top;">
                                 <span style="font-weight:bold;">Received by :</span>
-                                <span style="text-align:right; margin-left:10px;">__________________________________________</span>
-                                <span style="margin-left:15px;">المستلم</span>
+                                <span style="text-align:right; margin-left:10px;">_____________________________________</span>
+                                <span style="margin-left:10px;">المستلم</span>
                             </td>
                         </tr>
                     </table>
