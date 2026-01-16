@@ -351,7 +351,7 @@
                                     <span t-field="o.amount_total" />
                                 </td>
                             </tr>
-                            <!-- <tr>
+                            <tr>
                                 <td colspan="7" style="border:1px solid black; padding:5px;">
                                     <table width="100%" style="border-collapse:collapse;border:hidden;">
                                         <tr>
@@ -365,12 +365,12 @@
                                     </table>
                                     <t t-esc="o.narration" />
                                 </td>
-                            </tr> -->
+                            </tr>
                         </table>
-                        <div style="border:1px solid black;width:100%font-size:20px;font-weight:bold;padding:10px;font-family: Tahoma, Verdana, Segoe, sans-serif;">
+                        <!-- <div style="border:1px solid black;width:100%font-size:20px;font-weight:bold;padding:10px;font-family: Tahoma, Verdana, Segoe, sans-serif;">
                             Payment Terms :
                             <span t-field="o.invoice_payment_term_id.name" />
-                        </div>
+                        </div> -->
                         <!-- <div class="invoice-footer" style="margin-top:30px;">
                             <table style="width:100%;border:hidden">
                                 <tr>
