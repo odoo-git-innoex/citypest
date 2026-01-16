@@ -367,7 +367,7 @@
                                 </td>
                             </tr> -->
                         </table>
-                        <div style="border:1px solid black;width:100%font-size:20px;font-weight:bold;font-family: Tahoma, Verdana, Segoe, sans-serif;">
+                        <div style="border:1px solid black;width:100%;font-family: Tahoma, Verdana, Segoe, sans-serif;">
                             <table class="table" style="width:100%; border-collapse:collapse; border:0px solid white;font-family: Tahoma, Verdana, Segoe, sans-serif;">
                                 <tr>
                                     <td style="border:0px solid white; padding:5px;">
