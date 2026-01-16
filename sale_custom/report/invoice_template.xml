@@ -367,24 +367,25 @@
                                 </td>
                             </tr> -->
                         </table>
-                        <div style="border:1px solid black;width:100%;font-family: Tahoma, Verdana, Segoe, sans-serif;">
-                            <table class="table" style="width:100%; border-collapse:collapse; border:0px solid white;font-family: Tahoma, Verdana, Segoe, sans-serif;">
+                        <div style="width:100%;font-family: Tahoma, Verdana, Segoe, sans-serif;border:1px solid black;padding:5px;">
+                            <table width="100%" style="border-collapse:collapse;border:hidden;">
                                 <tr>
-                                    <td style="border:0px solid white; padding:5px;">
-                                        <table width="100%" style="border-collapse:collapse;border:hidden;">
-                                            <tr>
-                                                <td style="text-align:left;border:hidden;">
-                                                    <strong>Remarks :</strong>
-                                                </td>
-                                                <td style="text-align:right;border:hidden;" dir="rtl">
-                                                    <strong>ملاحظات</strong>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <t t-esc="o.narration" />
+                                    <td style="text-align:left;border:hidden;">
+                                        <strong>Remarks :</strong>
+                                    </td>
+                                    <td style="text-align:right;border:hidden;" dir="rtl">
+                                        <strong>ملاحظات</strong>
                                     </td>
                                 </tr>
+                                <t t-if="not is_html_empty(o.narration)">
+                                    <tr>
+                                        <td colspan="2" style="text-align:left;border:hidden;" dir="rtl">
+                                            <t t-esc="o.narration"/>
+                                        </td>
+                                    </tr>
+                                </t>
                             </table>
+                            
                             
                             <!-- Payment Terms :
                             <span t-field="o.invoice_payment_term_id.name" /> -->
