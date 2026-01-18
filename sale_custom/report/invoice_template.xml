@@ -368,22 +368,25 @@
                             </tr> -->
                         </table>
                         <div style="width:100%;font-family: Tahoma, Verdana, Segoe, sans-serif;border:1px solid black;padding:5px;">
+                            <style>
+                                .remarks-content p { display: inline; margin: 0; }
+                            </style>
                             <table width="100%" style="border-collapse:collapse;border:hidden;">
                                 <tr>
-                                    <td style="text-align:left;border:hidden;">
-                                        <strong>Remarks :</strong>
+                                    <td width="98%" style="border:hidden;">
+                                        <strong>Remarks : </strong><span class="remarks-content" t-if="not is_html_empty(o.narration)" t-out="o.narration" style="display: inline;"/>
                                     </td>
-                                    <td style="text-align:right;border:hidden;" dir="rtl">
+                                    <td width="2%" style="text-align:right;border:hidden;" dir="rtl">
                                         <strong>ملاحظات</strong>
                                     </td>
                                 </tr>
-                                <t t-if="not is_html_empty(o.narration)">
+                                <!-- <t t-if="not is_html_empty(o.narration)">
                                     <tr>
                                         <td colspan="2" style="text-align:left;border:hidden;" dir="rtl">
                                             <t t-esc="o.narration"/>
                                         </td>
                                     </tr>
-                                </t>
+                                </t> -->
                             </table>
                             
                             
