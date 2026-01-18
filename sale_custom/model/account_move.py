@@ -1,12 +1,13 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    do_number = fields.Char(string="D.O. No.", compute="_compute_do_number", readonly=False)
+    do_number = fields.Char(string="D.O. No.", compute="_compute_do_number", readonly=False, store=True)
     lpo_number = fields.Char(string="L.P.O. No.")
     service_date = fields.Datetime('Service Date')
 
+    @api.depends('partner_id', 'journal_id', 'service_date')
     def _compute_do_number(self):
         for record in self:
             do_number = record.do_number
