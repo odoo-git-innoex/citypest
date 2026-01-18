@@ -9,7 +9,7 @@ class AccountMove(models.Model):
 
     def _compute_do_number(self):
         for record in self:
-            do_number = self.do_number
+            do_number = record.do_number
             sale_order = record.invoice_line_ids.sale_line_ids.order_id
             fieldservice = sale_order.fsm_order_ids
             if fieldservice:
