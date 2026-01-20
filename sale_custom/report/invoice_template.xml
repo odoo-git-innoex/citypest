@@ -187,7 +187,7 @@
                                         <span>No.</span>
                                     </div>
                                     </th>
-                                    <th style="width:40%; border:1px solid black;">
+                                    <th style="width:50%; border:1px solid black;">
                                     <div>
                                         التفاصيل
                                         </div>
@@ -195,7 +195,7 @@
                                         <span>DESCRIPTION</span>
                                     </div>
                                     </th>
-                                    <th style="width:10%; border:1px solid black;">
+                                    <th style="width:7%; border:1px solid black;">
                                     <div>
                                         الكمية
                                         </div>
@@ -203,7 +203,7 @@
                                         <span>Qty</span>
                                     </div>
                                     </th>
-                                    <th style="width:10%; border:1px solid black;">
+                                    <th style="width:7%; border:1px solid black;">
                                     <div>
                                         الوحدة
                                         </div>
