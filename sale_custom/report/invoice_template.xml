@@ -18,9 +18,33 @@
                                         <strong>
                                             <span t-field="o.partner_id.name" />
                                         </strong>
+                                        <!-- <t t-if="o.partner_id and o.partner_id.contact_address">
+                                            <br />
+                                            <span t-esc="o.partner_id.contact_address.replace(o.partner_id.name, '')" />
+                                        </t> -->
                                         <br />
-                                        <span t-field="o.partner_id.contact_address" />
-                                        <br />
+                                        <t t-if="o.partner_id.street">
+                                            <span t-field="o.partner_id.street"/>,
+                                        </t>
+                                        <t t-if="o.partner_id.street2">
+                                            <span t-field="o.partner_id.street2"/>,
+                                        </t>
+                                        <t t-if="o.partner_id.city">
+                                            <span t-field="o.partner_id.city"/>,
+                                        </t>
+                                        <t t-if="o.partner_id.state_id">
+                                            <span t-field="o.partner_id.state_id"/>,
+                                        </t>
+                                        <t t-if="o.partner_id.zip">
+                                            <span t-field="o.partner_id.zip"/>,
+                                        </t>
+                                        <t t-if="o.partner_id.country_id">
+                                            <span t-field="o.partner_id.country_id"/>
+                                        </t>
+                                        <br/>
+                                        <t><span t-field="o.partner_id.mobile"/>
+                                        </t>
+                                        <br/>
                                         <t t-if="o.partner_id.vat">
                                             <table width="100%" style="border-collapse:collapse;">
                                                 <tr>
@@ -296,12 +320,12 @@
                             <!-- TOTALS ROWS -->
                             <tr>
                                 <!-- ROWSPAN CELL: AMOUNT IN WORDS -->
-                                <td colspan="3" rowspan="3" style="border:1px solid black; padding:8px; vertical-align:top;">
+                                <td colspan="2" rowspan="3" style="border:1px solid black; padding:8px; vertical-align:top;">
                                     <strong>Total Amount:</strong>
                                     <br />
                                     <span t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                                 </td>
-                                <td colspan="3" style="border:1px solid black; padding:5px;">
+                                <td colspan="4" style="border:1px solid black; padding:5px;">
                                     <table width="100%" style="border-collapse:collapse;border:hidden;">
                                         <tr>
                                             <td style="text-align:left;border:hidden;">
@@ -318,7 +342,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="border:1px solid black; padding:5px;">
+                                <td colspan="4" style="border:1px solid black; padding:5px;">
                                     <table width="100%" style="border-collapse:collapse;border:hidden;">
                                         <tr>
                                             <td style="text-align:left;border:hidden;">
@@ -335,7 +359,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="border:1px solid black; padding:5px;">
+                                <td colspan="4" style="border:1px solid black; padding:5px;">
                                     <table width="100%" style="border-collapse:collapse;border:hidden;">
                                         <tr>
                                             <td style="text-align:left;border:hidden;">
