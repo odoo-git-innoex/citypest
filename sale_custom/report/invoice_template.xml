@@ -6,7 +6,7 @@
                 <t t-call="web.basic_layout">
                     <t t-call="sale_custom.tax_invoice_header" />
                     <div class="page" style="font-family: Tahoma, Verdana, Segoe, sans-serif;">
-                        <div style="text-align:center;border:1px solid black;font-size:20px;font-weight:bold;padding-top:10px;padding-bottom:10px;">TAX INVOICE / فاتورة ضريبية</div>
+                        <div style="text-align:center;border:1px solid black;font-size:20px;font-weight:bold;padding-top:10px;padding-bottom:10px;font-family: 'Lato', 'Lucida Grande', 'Helvetica neue', 'Helvetica', 'Verdana', 'Arial', sans-serif;">TAX INVOICE / فاتورة ضريبية</div>
                         <table width="100%" style="margin-top:20px; border:1px solid black; border-collapse:collapse; font-size:13px;font-family: Tahoma, Verdana, Segoe, sans-serif;">
                             <tr>
                                 <!-- ================= LEFT COLUMN : CUSTOMER ================= -->
@@ -14,7 +14,7 @@
                                     <div style="border-bottom:1px solid black; width:100%; text-align:center; padding:6px;">
                                         <strong>Customer / العميل</strong>
                                     </div>
-                                    <div style="padding:6px;">
+                                    <div style="padding:6px;font-size:15px">
                                         <strong>
                                             <span t-field="o.partner_id.name" />
                                         </strong>
@@ -321,8 +321,7 @@
                             <tr>
                                 <!-- ROWSPAN CELL: AMOUNT IN WORDS -->
                                 <td colspan="2" rowspan="3" style="border:1px solid black; padding:8px; vertical-align:top;">
-                                    <strong>Total Amount:</strong>
-                                    <br />
+                                    <strong>Total Amount:- </strong>
                                     <span t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                                 </td>
                                 <td colspan="4" style="border:1px solid black; padding:5px;">
