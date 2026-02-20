@@ -23,5 +23,19 @@
             <field name="binding_model_id" ref="account.model_account_move"/>
             <field name="binding_type">report</field>
         </record>
+
+
+        <record id="action_tax_invoice_print_2" model="ir.actions.report">
+            <field name="name">Tax Invoice 2</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale_custom.tax_invoice_template_id_2</field>
+            <field name="report_file">sale_custom.tax_invoice_template_id_2</field>
+            <field name="paperformat_id" ref="sale_custom.tax_invoice_paperformat"/>
+            <field name="print_report_name">'Tax Invoice'</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+
     </data>
 </odoo>
